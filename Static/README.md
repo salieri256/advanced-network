@@ -32,6 +32,10 @@ containerlab deploy --reconfigure
 ### PC1 から PC2 にパケットを送る
 
 ```bash
+docker exec -it clab-static-routing-PC1 bash
+```
+
+```bash
 ping 10.0.3.1
 ```
 
