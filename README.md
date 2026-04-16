@@ -1,8 +1,8 @@
 # ざっくりわかる動的経路制御
 
-[![Open in GitHub Codespaces][codespaces-svg]][codespaces-url]
+[![Open in GitHub Codespaces][codespaces-icon]][codespaces-url]
 
-[codespaces-svg]: https://github.com/codespaces/badge.svg
+[codespaces-icon]: https://github.com/codespaces/badge.svg
 [codespaces-url]: https://codespaces.new/salieri256/advanced-network
 
 ## 📌 チャプター
