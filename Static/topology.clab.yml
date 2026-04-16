@@ -1,0 +1,63 @@
+name: static-routing
+topology:
+  nodes:
+    R1:
+      kind: linux
+      image: quay.io/frrouting/frr:10.4.0
+      group: router
+      binds:
+        - daemons:/etc/frr/daemons
+        - r1.conf:/etc/frr/frr.conf
+    R2:
+      kind: linux
+      image: quay.io/frrouting/frr:10.4.0
+      group: router
+      binds:
+        - daemons:/etc/frr/daemons
+        - r2.conf:/etc/frr/frr.conf
+    PC1:
+      kind: linux
+      image: debian:13.4-slim
+      group: server
+      exec:
+        - apt-get update
+        - apt-get install -y iproute2 iputils-ping traceroute mtr
+        - ip addr add 10.0.1.1/24 dev eth1
+        - ip route replace default via 10.0.1.254
+    PC2:
+      kind: linux
+      image: debian:13.4-slim
+      group: server
+      exec:
+        - apt-get update
+        - apt-get install -y iproute2 iputils-ping traceroute mtr
+        - ip addr add 10.0.3.1/24 dev eth1
+        - ip route replace default via 10.0.3.254
+  links:
+    - type: veth
+      endpoints:
+        - node: PC1
+          interface: eth1
+          mac: 0a:00:00:00:00:01
+        - node: R1
+          interface: e1-1
+          mac: 0a:00:01:00:01:01
+    - type: veth
+      endpoints:
+        - node: R1
+          interface: e2-1
+          mac: 0a:00:01:00:02:01
+        - node: R2
+          interface: e2-1
+          mac: 0a:00:02:00:02:01
+    - type: veth
+      endpoints:
+        - node: R2
+          interface: e1-1
+          mac: 0a:00:02:00:01:01
+        - node: PC2
+          interface: eth1
+          mac: 0a:00:03:00:00:01
+
+
+
