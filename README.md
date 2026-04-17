@@ -31,3 +31,7 @@ containerlab destroy --cleanup
 ## 📖 参考文献
 
 - [上級ネットワーク技術者になる本 ゼロから分かる動的経路制御](https://bookplus.nikkei.com/atcl/catalog/25/07/25/02129/)
+
+## 🤝 ライセンス
+
+MIT。詳細は [LICENSE](./LICENSE) を参照してください。
