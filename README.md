@@ -5,6 +5,9 @@
 [codespaces-icon]: https://github.com/codespaces/badge.svg
 [codespaces-url]: https://codespaces.new/salieri256/advanced-network
 
+ルーティングを「ざっくり理解できる」を目的とした学習リポジトリ。
+Codespaces で実験環境を立ち上げることができます。
+
 ## 📌 チャプター
 
 - 🔰 第1章 - L2 パケット転送
@@ -14,21 +17,9 @@
 - 🌐 第5章 - 動的経路制御
 - [🔤 ざっくりわかる用語集](./Glossary.md)
 
-## 🧪 実験環境
+## 🤔 なぜ？
 
-実験環境の構築:
-
-```bash
-containerlab deploy --reconfigure
-```
-
-実験環境の削除:
-
-```bash
-containerlab destroy --cleanup
-```
-
-## なぜ動的経路制御が必要か
+### なぜ動的経路制御が必要か
 
 - パケットが経由する経路を適切に選択するため
 - 回線や機器が停止した際に通信経路を迂回して通信を継続させるため
