@@ -1,0 +1,118 @@
+name: ospf-routing
+topology:
+  nodes:
+    RT1:
+      kind: linux
+      image: quay.io/frrouting/frr:10.4.0
+      group: router
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/rt1.conf:/etc/frr/frr.conf
+
+    RT2:
+      kind: linux
+      image: quay.io/frrouting/frr:10.4.0
+      group: router
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/rt2.conf:/etc/frr/frr.conf
+
+    RT3:
+      kind: linux
+      image: quay.io/frrouting/frr:10.4.0
+      group: router
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/rt3.conf:/etc/frr/frr.conf
+
+    RT4:
+      kind: linux
+      image: quay.io/frrouting/frr:10.4.0
+      group: router
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/rt4.conf:/etc/frr/frr.conf
+  
+    PC1:
+      kind: linux
+      image: debian:13.4-slim
+      group: server
+      exec:
+        - apt-get update
+        - apt-get install -y iproute2 iputils-ping traceroute mtr
+        - ip addr add 10.0.1.1/24 dev eth1
+        - ip route replace default via 10.0.1.254
+
+    PC2:
+      kind: linux
+      image: debian:13.4-slim
+      group: server
+      exec:
+        - apt-get update
+        - apt-get install -y iproute2 iputils-ping traceroute mtr
+        - ip addr add 10.0.3.1/24 dev eth1
+        - ip route replace default via 10.0.3.254
+
+  links:
+    - type: veth
+      endpoints:
+        - node: PC1
+          interface: eth1
+          mac: 0a:00:00:00:00:01
+        - node: RT1
+          interface: e1-99
+          mac: 0a:00:01:00:01:99
+
+    - type: veth
+      endpoints:
+        - node: RT1
+          interface: e1-2
+          mac: 0a:00:01:00:01:02
+        - node: RT2
+          interface: e2-1
+          mac: 0a:00:02:00:02:01
+
+    - type: veth
+      endpoints:
+        - node: RT1
+          interface: e1-3
+          mac: 0a:00:01:00:01:03
+        - node: RT3
+          interface: e3-1
+          mac: 0a:00:03:00:03:01
+
+    - type: veth
+      endpoints:
+        - node: RT2
+          interface: e2-3
+          mac: 0a:00:02:00:02:03
+        - node: RT3
+          interface: e3-2
+          mac: 0a:00:03:00:03:02
+
+    - type: veth
+      endpoints:
+        - node: RT2
+          interface: e2-4
+          mac: 0a:00:02:00:02:04
+        - node: RT4
+          interface: e4-2
+          mac: 0a:00:04:00:04:02
+
+    - type: veth
+      endpoints:
+        - node: RT3
+          interface: e3-4
+          mac: 0a:00:03:00:03:04
+        - node: RT4
+          interface: e4-3
+          mac: 0a:00:04:00:04:03
+
+    - type: veth
+      endpoints:
+        - node: RT4
+          interface: e4-99
+          mac: 0a:00:04:00:04:99
+        - node: PC2
+          interface: eth1
+          mac: 0a:00:05:00:00:01
