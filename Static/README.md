@@ -2,7 +2,7 @@
 
 ## 🧪 実験環境
 
-|<img src="./screenshots/topology.png" width="256">|
+|![](./screenshots/topology.png)|
 |:-:|
 |トポロジー図|
 

@@ -6,15 +6,15 @@ topology:
       image: quay.io/frrouting/frr:10.4.0
       group: router
       binds:
-        - daemons:/etc/frr/daemons
-        - r1.conf:/etc/frr/frr.conf
+        - configs/daemons:/etc/frr/daemons
+        - configs/rt1.conf:/etc/frr/frr.conf
     R2:
       kind: linux
       image: quay.io/frrouting/frr:10.4.0
       group: router
       binds:
-        - daemons:/etc/frr/daemons
-        - r2.conf:/etc/frr/frr.conf
+        - configs/daemons:/etc/frr/daemons
+        - configs/rt2.conf:/etc/frr/frr.conf
     PC1:
       kind: linux
       image: debian:13.4-slim
