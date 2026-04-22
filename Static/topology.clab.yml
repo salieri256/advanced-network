@@ -40,21 +40,21 @@ topology:
           interface: eth1
           mac: 0a:00:00:00:00:01
         - node: R1
-          interface: e1-1
-          mac: 0a:00:01:00:01:01
+          interface: e1-99
+          mac: 0a:00:01:00:01:99
     - type: veth
       endpoints:
         - node: R1
-          interface: e2-1
-          mac: 0a:00:01:00:02:01
+          interface: e1-2
+          mac: 0a:00:01:00:01:02
         - node: R2
           interface: e2-1
           mac: 0a:00:02:00:02:01
     - type: veth
       endpoints:
         - node: R2
-          interface: e1-1
-          mac: 0a:00:02:00:01:01
+          interface: e2-99
+          mac: 0a:00:02:00:02:99
         - node: PC2
           interface: eth1
           mac: 0a:00:03:00:00:01
