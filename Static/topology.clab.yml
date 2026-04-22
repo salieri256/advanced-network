@@ -1,14 +1,14 @@
 name: static-routing
 topology:
   nodes:
-    R1:
+    RT1:
       kind: linux
       image: quay.io/frrouting/frr:10.4.0
       group: router
       binds:
         - configs/daemons:/etc/frr/daemons
         - configs/rt1.conf:/etc/frr/frr.conf
-    R2:
+    RT2:
       kind: linux
       image: quay.io/frrouting/frr:10.4.0
       group: router
@@ -39,20 +39,20 @@ topology:
         - node: PC1
           interface: eth1
           mac: 0a:00:00:00:00:01
-        - node: R1
+        - node: RT1
           interface: e1-99
           mac: 0a:00:01:00:01:99
     - type: veth
       endpoints:
-        - node: R1
+        - node: RT1
           interface: e1-2
           mac: 0a:00:01:00:01:02
-        - node: R2
+        - node: RT2
           interface: e2-1
           mac: 0a:00:02:00:02:01
     - type: veth
       endpoints:
-        - node: R2
+        - node: RT2
           interface: e2-99
           mac: 0a:00:02:00:02:99
         - node: PC2
