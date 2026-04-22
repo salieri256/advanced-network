@@ -25,6 +25,13 @@ Autonomous System Boundary Router の略。
 
 Autonomous System Number の略。
 [AS](#as) 番号。
+従来は 2 オクテット (16 ビット = 65,536 通り) の表現ができた。
+現在は 4 オクテット (32 ビット = 約 43 億通り) の表現ができるよう拡張されている。
+
+## AS_PATH プリペンド
+
+BGP の UPDATE メッセージにおける NLRI のパス属性に関する用語。
+自身の AS 番号を意図的に複数追加することによって、経路を遠く見せかける手法のこと。
 
 ## BDR
 
@@ -35,6 +42,11 @@ Backup Designated Router の略。
 Border Gateway Protocol の略。
 動的経路制御のひとつで、[EGP](#egp) に分類される。
 
+## BGP ケイパビリティー
+
+各 BGP スピーカーが対応可能な機能のこと。
+BGP ピアを確立する初期段階で、OPEN メッセージにて通知する。
+
 ## BGP スピーカー
 
 BGPが動作しているルーターのこと。
@@ -42,6 +54,11 @@ BGPが動作しているルーターのこと。
 ## BGP ピア
 
 BGP スピーカー同士の接続関係のこと。
+
+## BGP メッセージ
+
+BGP スピーカー同士が交わす通信内容のこと。
+TCP 179 番ポートで送信、受信する。
 
 ## CIDR
 
@@ -144,9 +161,18 @@ Link State Request の略。
 
 Link State Update の略。
 
+## Multiprotocol Extensions
+
+BGP スピーカーが IPv4 以外の経路情報を伝播できるようにするための機能のこと。
+
 ## Network LSA
 
 ## Network Summary LSA
+
+## NLRI
+
+Network Layer Reachability Information の略。
+BGP の UPDATE メッセージにおいて、宛先ネットワークのアドレスを示す情報。
 
 ## OSI
 
@@ -161,6 +187,10 @@ Open Shortest Path First の略。
 
 ## passive-interface
 
+## RFC
+
+Request for Comments の略。
+
 ## RIB
 
 Routing Information Base の略。
@@ -170,6 +200,10 @@ Routing Information Base の略。
 Routing Information Protocol の略。
 動的経路制御のひとつで、[IGP](#igp) に分類される。
 
+## Route Refresh
+
+BGP スピーカーが経路情報の再送信を要求するための機能のこと。
+
 ## Router-ID
 
 OSPF におけるルーターの識別子。
@@ -177,13 +211,23 @@ OSPF におけるルーターの識別子。
 
 ## Router LSA
 
-## TCP/IP
+## Support for 4-Octet AS Number
 
-Routing Information Protocol の略。
+BGP スピーカーが 4 オクテットの AS 番号を扱う機能のこと。
+
+## TCP
+
+Transmission Control Protocol の略。
+
+## TCP/IP
 
 ## TTL
 
 Time To Live の略。
+
+## WITHDRAWN
+
+BGP の UPDATE メッセージにおいて、利用できなくなった経路を伝えるための情報。
 
 ## アジャセンシー
 
