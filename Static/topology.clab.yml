@@ -7,6 +7,7 @@ topology:
       group: router
       binds:
         - configs/daemons:/etc/frr/daemons
+        - configs/vtysh.conf:/etc/frr/vtysh.conf
         - configs/rt1.conf:/etc/frr/frr.conf
     RT2:
       kind: linux
@@ -14,6 +15,7 @@ topology:
       group: router
       binds:
         - configs/daemons:/etc/frr/daemons
+        - configs/vtysh.conf:/etc/frr/vtysh.conf
         - configs/rt2.conf:/etc/frr/frr.conf
     PC1:
       kind: linux
